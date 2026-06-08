@@ -1,9 +1,343 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-  <title>Movie App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyTube</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#202020;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:red;
+}
+
+input{
+width:60%;
+padding:10px;
+border:none;
+border-radius:20px;
+}
+
+#player{
+padding:20px;
+text-align:center;
+}
+
+iframe{
+width:90%;
+height:500px;
+max-width:1000px;
+border:none;
+border-radius:10px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.video{
+background:#1f1f1f;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.video:hover{
+transform:scale(1.03);
+}
+
+.video img{
+width:100%;
+display:block;
+}
+
+.video h3{
+padding:10px;
+font-size:16px;
+}
+
+.video p{
+padding:0 10px 10px;
+color:#aaa;
+}
+</style>
 </head>
+
 <body>
-  <h1>مرحبًا بالعالم</h1>
+
+<header>
+<div class="logo">MyTube</div>
+<input type="text" id="search" placeholder="ابحث عن فيديو...">
+</header>
+
+<div id="player">
+<iframe id="videoPlayer"
+src="https://www.youtube.com/embed/jNQXAC9IVRw">
+</iframe>
+</div>
+
+<div class="container" id="videos">
+
+<div class="video"
+data-title="Me at the zoo"
+onclick="playVideo('jNQXAC9IVRw')">
+<img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg">
+<h3>Me at the zoo</h3>
+<p>YouTube</p>
+</div>
+
+<div class="video"
+data-title="Gangnam Style"
+onclick="playVideo('9bZkp7q19f0')">
+<img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
+<h3>Gangnam Style</h3>
+<p>PSY</p>
+</div>
+
+<div class="video"
+data-title="Never Gonna Give You Up"
+onclick="playVideo('dQw4w9WgXcQ')">
+<img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
+<h3>Never Gonna Give You Up</h3>
+<p>Rick Astley</p>
+</div>
+
+<div class="video"
+data-title="Believer"
+onclick="playVideo('7wtfhZwyrcc')">
+<img src="https://img.youtube.com/vi/7wtfhZwyrcc/maxresdefault.jpg">
+<h3>Believer</h3>
+<p>Imagine Dragons</p>
+</div>
+
+</div>
+
+<script>
+function playVideo(id){
+document.getElementById("videoPlayer").src =
+"https://www.youtube.com/embed/" + id;
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+document.getElementById("search")
+.addEventListener("keyup", function(){
+
+let value = this.value.toLowerCase();
+
+document.querySelectorAll(".video")
+.forEach(video => {
+
+let title =
+video.dataset.title.toLowerCase();
+
+video.style.display =
+title.includes(value)
+? "block"
+: "none";
+});
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyTube</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#202020;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:red;
+}
+
+input{
+width:60%;
+padding:10px;
+border:none;
+border-radius:20px;
+}
+
+#player{
+padding:20px;
+text-align:center;
+}
+
+iframe{
+width:90%;
+height:500px;
+max-width:1000px;
+border:none;
+border-radius:10px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.video{
+background:#1f1f1f;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.video:hover{
+transform:scale(1.03);
+}
+
+.video img{
+width:100%;
+display:block;
+}
+
+.video h3{
+padding:10px;
+font-size:16px;
+}
+
+.video p{
+padding:0 10px 10px;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">MyTube</div>
+<input type="text" id="search" placeholder="ابحث عن فيديو...">
+</header>
+
+<div id="player">
+<iframe id="videoPlayer"
+src="https://www.youtube.com/embed/jNQXAC9IVRw">
+</iframe>
+</div>
+
+<div class="container" id="videos">
+
+<div class="video"
+data-title="Me at the zoo"
+onclick="playVideo('jNQXAC9IVRw')">
+<img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg">
+<h3>Me at the zoo</h3>
+<p>YouTube</p>
+</div>
+
+<div class="video"
+data-title="Gangnam Style"
+onclick="playVideo('9bZkp7q19f0')">
+<img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
+<h3>Gangnam Style</h3>
+<p>PSY</p>
+</div>
+
+<div class="video"
+data-title="Never Gonna Give You Up"
+onclick="playVideo('dQw4w9WgXcQ')">
+<img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
+<h3>Never Gonna Give You Up</h3>
+<p>Rick Astley</p>
+</div>
+
+<div class="video"
+data-title="Believer"
+onclick="playVideo('7wtfhZwyrcc')">
+<img src="https://img.youtube.com/vi/7wtfhZwyrcc/maxresdefault.jpg">
+<h3>Believer</h3>
+<p>Imagine Dragons</p>
+</div>
+
+</div>
+
+<script>
+function playVideo(id){
+document.getElementById("videoPlayer").src =
+"https://www.youtube.com/embed/" + id;
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+document.getElementById("search")
+.addEventListener("keyup", function(){
+
+let value = this.value.toLowerCase();
+
+document.querySelectorAll(".video")
+.forEach(video => {
+
+let title =
+video.dataset.title.toLowerCase();
+
+video.style.display =
+title.includes(value)
+? "block"
+: "none";
+});
+});
+</script>
+
 </body>
 </html>
